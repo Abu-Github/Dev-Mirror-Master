@@ -157,11 +157,11 @@ def get_readable_message():
                 if download.status() == MirrorStatus.STATUS_CLONING:
                     msg += f"\n<b>Cloned </b> {get_readable_file_size(download.processed_bytes())} of {download.size()}"
                 elif download.status() == MirrorStatus.STATUS_UPLOADING:
-                    msg += f"\n<b>Uploaded </b> {get_readable_file_size(download.processed_bytes())} of {download.size()}"
+                    msg += f"\n<b> </b> {get_readable_file_size(download.processed_bytes())} of {download.size()}"
                 else:
-                    msg += f"\n<b>Downloaded </b> {get_readable_file_size(download.processed_bytes())} of {download.size()}"
+                    msg += f"\n<b> </b> {get_readable_file_size(download.processed_bytes())} of {download.size()}"
                 msg += f"\n<b>Speed </b> {download.speed()}\n<b>Waiting </b> {download.eta()}"
-                msg += f"\n<b>Elapsed </b>{get_readable_time(time() - download.message.date.timestamp())}"
+                msg += f"\n<b> </b>{get_readable_time(time() - download.message.date.timestamp())}"
                 msg += f'\n<b>Request </b> <a href="https://t.me/c/{str(download.message.chat.id)[4:]}/{download.message.message_id}">{download.message.from_user.first_name}</a>'
                 msg += f"\n<b>Worker </b> {download.eng()}"
                 try:
@@ -177,15 +177,15 @@ def get_readable_message():
                 msg += f"\n<b>STOP </b> <code>/{BotCommands.CancelMirror} {download.gid()}</code>"
 
             elif download.status() == MirrorStatus.STATUS_SEEDING:
-                msg += f"\n<b>Size </b>{download.size()}"
+                msg += f"\n<b> </b>{download.size()}"
                 msg += f"\n<b>Worker </b> <code>QBit Engine</code>"
                 msg += f"\n<b>Speed </b>{get_readable_file_size(download.torrent_info().upspeed)}/s"
-                msg += f" | <b>Uploaded </b>{get_readable_file_size(download.torrent_info().uploaded)}"
-                msg += f"\n<b>Ratio </b>{round(download.torrent_info().ratio, 3)}"
-                msg += f" | <b>Time </b>{get_readable_time(download.torrent_info().seeding_time)}"
+                msg += f" | <b> </b>{get_readable_file_size(download.torrent_info().uploaded)}"
+                msg += f"\n<b> </b>{round(download.torrent_info().ratio, 3)}"
+                msg += f" | <b> </b>{get_readable_time(download.torrent_info().seeding_time)}"
                 msg += f"\n<b>STOP </b> <code>/{BotCommands.CancelMirror} {download.gid()}</code>"
             else:
-                msg += f"\n<b>Size </b>{download.size()}"
+                msg += f"\n<b> </b>{download.size()}"
                 msg += f"\n<b>Worker </b> {download.eng()}"
                 msg += "\n"
             if STATUS_LIMIT is not None and index == STATUS_LIMIT:
