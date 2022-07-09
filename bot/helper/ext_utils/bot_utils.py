@@ -190,9 +190,9 @@ def get_readable_message():
                 msg += "\n"
             if STATUS_LIMIT is not None and index == STATUS_LIMIT:
                 break
-        #bmsg = f"\n<b>  </b>"
-        #bmsg += f"\n<b>DISK </b> {get_readable_file_size(disk_usage(DOWNLOAD_DIR).free)}"
-        #bmsg += f"<b> - UPTM </b> {get_readable_time(time() - botStartTime)}"
+        bmsg = f"\n<b>  </b>"
+        bmsg += f"\n<b>DISK </b> {get_readable_file_size(disk_usage(DOWNLOAD_DIR).free)}"
+        bmsg += f"<b> - UPTM </b> {get_readable_time(time() - botStartTime)}"
         dlspeed_bytes = 0
         upspeed_bytes = 0
         for download in list(download_dict.values()):
