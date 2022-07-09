@@ -44,22 +44,22 @@ def stats(update, context):
     mem_t = get_readable_file_size(memory.total)
     mem_a = get_readable_file_size(memory.available)
     mem_u = get_readable_file_size(memory.used)
-    stats = f'<b>Commit Date:</b> {last_commit}\n'\
-            f'<b>Bot Uptime:</b> {currentTime}\n'\
-            f'<b>OS Uptime:</b> {osUptime}\n'\
-            f'<b>Total Disk Space:</b> {total}\n'\
-            f'<b>Used:</b> {used} | <b>Free:</b> {free}\n'\
-            f'<b>Upload:</b> {sent}\n'\
-            f'<b>Download:</b> {recv}\n'\
-            f'<b>CPU:</b> {cpuUsage}%\n'\
-            f'<b>RAM:</b> {mem_p}%\n'\
-            f'<b>DISK:</b> {disk}%\n'\
-            f'<b>Physical Cores:</b> {p_core}\n'\
-            f'<b>Total Cores:</b> {t_core}\n'\
-            f'<b>SWAP:</b> {swap_t} | <b>Used:</b> {swap_p}%\n'\
-            f'<b>Memory Total:</b> {mem_t}\n'\
-            f'<b>Memory Free:</b> {mem_a}\n'\
-            f'<b>Memory Used:</b> {mem_u}\n'
+    stats = f'<b>Commit Date - </b> {last_commit}\n'\
+            f'<b>Bot Uptime - </b> {currentTime}\n'\
+            f'<b>OS Uptime - </b> {osUptime}\n'\
+            f'<b>Total Disk Space - </b> {total}\n'\
+            f'<b>Used - </b> {used} | <b>Free:</b> {free}\n'\
+            f'<b>Upload - </b> {sent}\n'\
+            f'<b>Download - </b> {recv}\n'\
+            f'<b>CPU - </b> {cpuUsage}%\n'\
+            f'<b>RAM - </b> {mem_p}%\n'\
+            f'<b>DISK - </b> {disk}%\n'\
+            f'<b>Physical Cores - </b> {p_core}\n'\
+            f'<b>Total Cores - </b> {t_core}\n'\
+            f'<b>SWAP - </b> {swap_t} | <b>Used - </b> {swap_p}%\n'\
+            f'<b>Memory Total - </b> {mem_t}\n'\
+            f'<b>Memory Free - </b> {mem_a}\n'\
+            f'<b>Memory Used - </b> {mem_u}\n'
     sendMessage(stats, context.bot, update.message)
 
 
@@ -73,15 +73,15 @@ def start(update, context):
     reply_markup = InlineKeyboardMarkup(buttons.build_menu(2))
     if CustomFilters.authorized_user(update) or CustomFilters.authorized_chat(update):
         start_string = f'''
-⚡️Dumb Leech Service Is Ready For You
-Type /{BotCommands.HelpCommand} to get a list of available commands
+Whatsup Dude 
+If You Need Any Help Use CMD {BotCommands.HelpCommand} to get a list of available CMD
 '''
         sendMarkup(start_string, context.bot, update.message, reply_markup)
     else:
-        sendMarkup('Sorry, You cannot use me', context.bot, update.message, reply_markup)
+        sendMarkup('Dude, Dont Try To Use Me Ask My Owner @Jackssmit', context.bot, update.message, reply_markup)
 
 def restart(update, context):
-    restart_message = sendMessage("Restarting...", context.bot, update.message)
+    restart_message = sendMessage("⚡️𝘽𝙊𝙏 - 𝘽𝙤𝙤𝙨𝙩𝙞𝙣𝙜. . . . ", context.bot, update.message)
     if Interval:
         Interval[0].cancel()
         Interval.clear()
@@ -199,7 +199,7 @@ help_string = f'''
 
 def bot_help(update, context):
     button = ButtonMaker()
-    button.buildbutton("Other Commands", f"https://telegra.ph/{help}")
+    button.buildbutton(" Dude For Other Commands", f"https://telegra.ph/{help}")
     reply_markup = InlineKeyboardMarkup(button.build_menu(1))
     sendMarkup(help_string, context.bot, update.message, reply_markup)
 
@@ -212,15 +212,15 @@ def main():
                 if ospath.isfile(".restartmsg"):
                     with open(".restartmsg") as f:
                         chat_id, msg_id = map(int, f)
-                    msg = 'Restarted successfully!'
+                    msg = ' ⚡️𝗕𝗢𝗧 𝗕𝗼𝗼𝘀𝘁𝗲𝗱 𝘀𝘂𝗰𝗰𝗲𝘀𝘀𝗳𝘂𝗹𝗹𝘆'
                 else:
-                    msg = 'Bot Restarted!'
+                    msg = '⚡️𝗕𝗢𝗧 𝗕𝗼𝗼𝘀𝘁𝗲𝗱'
                 for tag, links in data.items():
                      msg += f"\n\n{tag}: "
                      for index, link in enumerate(links, start=1):
                          msg += f" <a href='{link}'>{index}</a> |"
                          if len(msg.encode()) > 4000:
-                             if 'Restarted successfully!' in msg and cid == chat_id:
+                             if '⚡️𝗕𝗢𝗧 𝗕𝗼𝗼𝘀𝘁𝗲𝗱 𝘀𝘂𝗰𝗰𝗲𝘀𝘀𝗳𝘂𝗹𝗹𝘆' in msg and cid == chat_id:
                                  bot.editMessageText(msg, chat_id, msg_id, parse_mode='HTMl', disable_web_page_preview=True)
                                  osremove(".restartmsg")
                              else:
@@ -229,7 +229,7 @@ def main():
                                  except Exception as e:
                                      LOGGER.error(e)
                              msg = ''
-                if 'Restarted successfully!' in msg and cid == chat_id:
+                if '⚡️𝗕𝗢𝗧 𝗕𝗼𝗼𝘀𝘁𝗲𝗱 𝘀𝘂𝗰𝗰𝗲𝘀𝘀𝗳𝘂𝗹𝗹𝘆' in msg and cid == chat_id:
                      bot.editMessageText(msg, chat_id, msg_id, parse_mode='HTMl', disable_web_page_preview=True)
                      osremove(".restartmsg")
                 else:
@@ -241,7 +241,7 @@ def main():
     if ospath.isfile(".restartmsg"):
         with open(".restartmsg") as f:
             chat_id, msg_id = map(int, f)
-        bot.edit_message_text("Restarted successfully!", chat_id, msg_id)
+        bot.edit_message_text("⚡️𝗕𝗢𝗧 𝗕𝗼𝗼𝘀𝘁𝗲𝗱 𝘀𝘂𝗰𝗰𝗲𝘀𝘀𝗳𝘂𝗹𝗹𝘆", chat_id, msg_id)
         osremove(".restartmsg")
 
     start_handler = CommandHandler(BotCommands.StartCommand, start, run_async=True)
@@ -261,7 +261,7 @@ def main():
     dispatcher.add_handler(stats_handler)
     dispatcher.add_handler(log_handler)
     updater.start_polling(drop_pending_updates=IGNORE_PENDING_REQUESTS)
-    LOGGER.info("Congratulations, Bot Started Sucessfully !")
+    LOGGER.info("WooooHoooo, ⚡️𝗕𝗢𝗧 𝗕𝗼𝗼𝘀𝘁𝗲𝗱 𝘀𝘂𝗰𝗰𝗲𝘀𝘀𝗳𝘂𝗹𝗹𝘆")
     signal(SIGINT, exit_clean_up)
 
 app.start()
