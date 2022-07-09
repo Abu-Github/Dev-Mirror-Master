@@ -471,16 +471,16 @@ try:
     if len(CHANNEL_USERNAME) == 0:
         raise KeyError
 except KeyError:
-    log_info("CHANNEL_USERNAME not provided! Using default @ ")
-    CHANNEL_USERNAME = " "
+    log_info("CHANNEL_USERNAME not provided! Using default @dumbleech")
+    CHANNEL_USERNAME = "Dumbleech"
 try:
     FSUB_CHANNEL_ID = getConfig("FSUB_CHANNEL_ID")
     if len(FSUB_CHANNEL_ID) == 0:
         raise KeyError
     FSUB_CHANNEL_ID = int(FSUB_CHANNEL_ID)
 except KeyError:
-    log_info("CHANNEL_ID not provided! Using default id of @ ")
-    FSUB_CHANNEL_ID = 
+    log_info("CHANNEL_ID not provided! Using default id of @dumbleech")
+    FSUB_CHANNEL_ID = -1663311419
 try:
     BOT_PM = getConfig('BOT_PM')
     BOT_PM = BOT_PM.lower() == 'true'
