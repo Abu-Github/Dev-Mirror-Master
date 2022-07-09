@@ -157,9 +157,9 @@ def get_readable_message():
                 if download.status() == MirrorStatus.STATUS_CLONING:
                     msg += f"\n<b>Cloned - </b> {get_readable_file_size(download.processed_bytes())} of {download.size()}"
                 elif download.status() == MirrorStatus.STATUS_UPLOADING:
-                    msg += f"\n<b>Sending - </b> {get_readable_file_size(download.processed_bytes())} of {download.size()}"
-                else:
                     msg += f"\n<b>Receiving - </b> {get_readable_file_size(download.processed_bytes())} of {download.size()}"
+                else:
+                    msg += f"\n<b>Sending - </b> {get_readable_file_size(download.processed_bytes())} of {download.size()}"
                 msg += f"\n<b>Speed - </b> {download.speed()}\n<b>Waiting </b> {download.eta()}"
                 msg += f"\n<b>Elapsed -  </b>{get_readable_time(time() - download.message.date.timestamp())}"
                 msg += f'\n<b>Request - </b> <a href="https://t.me/c/{str(download.message.chat.id)[4:]}/{download.message.message_id}">{download.message.from_user.first_name}</a>'
