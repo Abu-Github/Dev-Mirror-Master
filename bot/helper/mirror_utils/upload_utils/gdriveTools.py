@@ -671,7 +671,7 @@ class GoogleDriveHelper:
         for content in telegraph_content:
             path.append(
                 telegraph.create_page(
-                    title='Z-Mirror-Bot Drive Search',
+                    title='Dumb L⚡️ech',
                     content=content
                 )["path"]
             )
@@ -680,7 +680,7 @@ class GoogleDriveHelper:
 
         msg = f"<b>Found {contents_count} result for <i>{fileName}</i></b>"
         buttons = ButtonMaker()
-        buttons.buildbutton("View", f"https://telegra.ph/{path[0]}")
+        buttons.buildbutton("Check Out Dude", f"https://telegra.ph/{path[0]}")
 
         return msg, InlineKeyboardMarkup(buttons.build_menu(1))
 
