@@ -15,8 +15,8 @@ def mirror_status(update, context):
             currentTime = get_readable_time(time() - botStartTime)
             free = get_readable_file_size(disk_usage(DOWNLOAD_DIR).free)
             message = 'Nothing \n '
-            message += f"\n\n<b>CPU        :</b> {cpu_percent()}%\n<b>SSD        :</b> {get_readable_file_size(disk_usage(DOWNLOAD_DIR).free)}" \
-                       f"\n<b>RAM       :</b> {virtual_memory().percent}%\n<b>UPTM     :</b> {get_readable_time(time() - botStartTime)}"
+            message += f"\n\n<b>CPU        - </b> {cpu_percent()}%\n<b>SSD        - </b> {get_readable_file_size(disk_usage(DOWNLOAD_DIR).free)}" \
+                       f"\n<b>RAM       - </b> {virtual_memory().percent}%\n<b>UPTM     - </b> {get_readable_time(time() - botStartTime)}"
             reply_message = sendMessage(message, context.bot, update.message)
             Thread(target=auto_delete_message, args=(context.bot, update.message, reply_message)).start()
     else:
@@ -54,6 +54,6 @@ def status_pages(update, context):
 mirror_status_handler = CommandHandler(BotCommands.StatusCommand, mirror_status,
                                        filters=CustomFilters.authorized_chat | CustomFilters.authorized_user, run_async=True)
 
-status_pages_handler = CallbackQueryHandler(status_pages, pattern="status", run_async=True)
+status_pages_handler = CallbackQueryHandler(status_pages, pattern="⚡️status", run_async=True)
 dispatcher.add_handler(mirror_status_handler)
 dispatcher.add_handler(status_pages_handler)
